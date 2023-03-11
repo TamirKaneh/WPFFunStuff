@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BallsAnimation", "BallsAnimation\BallsAnimation.csproj", "{74803EBA-0FC6-4B44-AFF2-A5A21D95A7B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74803EBA-0FC6-4B44-AFF2-A5A21D95A7B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74803EBA-0FC6-4B44-AFF2-A5A21D95A7B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74803EBA-0FC6-4B44-AFF2-A5A21D95A7B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74803EBA-0FC6-4B44-AFF2-A5A21D95A7B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {114C1989-8466-4CBF-8239-A65360583BBE}
+	EndGlobalSection
+EndGlobal
