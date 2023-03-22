@@ -12,8 +12,15 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button Content="Add BAll" Click="Button_Click"/>
-
-        <Canvas x:Name="MyCanvas"  Grid.Row="1" MouseDown="MyCanvas_MouseDown" Background="Bisque"/>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="  Add BAll  " Click="Button_Click"/>
+            <Button Content="Add 10 BAll" Click="Button_Click_1"/>
+            <Label Content="FPS:"/>
+            <Label x:Name="lblFPS"/>
+        </StackPanel>
+        <Border BorderThickness="10" BorderBrush="Sienna" Grid.Row="1">
+            <Canvas x:Name="MyCanvas"   MouseDown="MyCanvas_MouseDown" Background="Bisque"/>
+        </Border>
+        
     </Grid>
 </Window>

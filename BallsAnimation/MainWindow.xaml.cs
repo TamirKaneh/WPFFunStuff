@@ -27,8 +27,8 @@ namespace BallsAnimation
         private void AddBall()
         {
             var ball = new Ellipse();
-            ball.Width = 15;
-            ball.Height = 15;
+            ball.Width = 50;
+            ball.Height = 50;
             ball.Fill = new SolidColorBrush(generateRandomColor());
             Canvas.SetLeft(ball, 0);
             Canvas.SetTop(ball, 0);
@@ -41,6 +41,23 @@ namespace BallsAnimation
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AddBall();
+        }
+
+        private void AddBalls(int numOfballs)
+        {
+            for(int i=0;i< numOfballs; i++)
+            {
+                var ball = new Ellipse();
+                ball.Width = 50;
+                ball.Height = 50;
+                ball.Fill = new SolidColorBrush(generateRandomColor());
+                Canvas.SetLeft(ball, i*10);
+                Canvas.SetTop(ball, i * 10);
+                ball.Tag = new Point();
+                MyCanvas.Children.Add(ball);
+                Collection.Add(ball);
+            }
+            
         }
 
         private void MyCanvas_MouseDown(object sender, MouseButtonEventArgs e)
@@ -60,41 +77,36 @@ namespace BallsAnimation
                     double deltaY = clickPoint.Y - newY;
                     CompositionTarget.Rendering += (s, args) =>
                     {
-
                         newX += deltaX / 10;
                         newY += deltaY / 10;
 
                         if (newX - ball.Width / 2 < 0) // Left edge
                         {
                             newX = ball.Width / 2;
-                            ChangeVector(ref deltaX);
+                            deltaX = -deltaX;
                         }
                         if (newX + ball.Width / 2 > MyCanvas.ActualWidth) // Right edge
                         {
                             newX = (MyCanvas.ActualWidth - ball.Width / 2);
-                            ChangeVector(ref deltaX);
+                            deltaX = -deltaX;
                         }
 
                         if (newY - ball.Height / 2 < 0) // Top edge
                         {
                             newY = ball.Height / 2;
-                            ChangeVector(ref deltaY);
+                            deltaY = -deltaY;
                         }
                         if (newY + ball.Height / 2 > MyCanvas.ActualHeight) // Bottom edge
                         {
                             newY = MyCanvas.ActualHeight - ball.Height / 2;
-                            ChangeVector(ref deltaY);
+                            deltaY = -deltaY;
                         }
                         Canvas.SetLeft(ball, newX - ball.Width / 2);
                         Canvas.SetTop(ball, newY - ball.Height / 2);
                     };
+
                 }
             }
-        }
-
-        private void ChangeVector(ref double v)
-        {
-            v *= -1;
         }
 
         private Color generateRandomColor()
@@ -108,6 +120,11 @@ namespace BallsAnimation
             byte blue = (byte)rand.Next(256);
 
             return Color.FromRgb(red, green, blue); 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AddBalls(10);
         }
     }
 }
