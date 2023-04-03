@@ -13,11 +13,13 @@ namespace BallsAnimation
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
             AddBall();
         }
+
 
         //private Ellipse ball;
         private Random random = new Random();
@@ -44,7 +46,9 @@ namespace BallsAnimation
 
         private void AddBalls(int numOfballs)
         {
-            for(int i=0;i< numOfballs; i++)
+            int i;
+
+            for (i=0;i< numOfballs; i++)
             {
                 var ball = new Ellipse();
                 ball.Width = 50;
@@ -55,8 +59,12 @@ namespace BallsAnimation
                 ball.Tag = new Point();
                 AddBall(ball);
             }
-            
+
+            Multi = i;
+
+
         }
+        int Multi = 0;
 
         private void AddBall(UIElement ball)
         {
@@ -65,27 +73,33 @@ namespace BallsAnimation
         }
         private void MyCanvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            foreach (var ball in Collection)
+            int i = Collection.Count - Multi;
+            
+            Log.Text += "Ball " + i + "\n";
+            var ball = Collection[i-1];
+            var clickPoint = e.GetPosition(MyCanvas);
+            Point ballPoint = new Point(Canvas.GetLeft(ball) + ball.Width / 2, Canvas.GetTop(ball) + ball.Height / 2);
+           
+            if (Multi > 0)
+                Multi--;
+
+
+            double distance = Math.Sqrt(Math.Pow(clickPoint.X - ballPoint.X, 2) + Math.Pow(clickPoint.Y - ballPoint.Y, 2));
+            if (distance < ball.Width / 2)
             {
-                var clickPoint = e.GetPosition(MyCanvas);
-                Point ballPoint = new Point(Canvas.GetLeft(ball) + ball.Width / 2, Canvas.GetTop(ball) + ball.Height / 2);
+                // Ball was clicked, start moving it
+                double newX = Canvas.GetLeft(ball) + ball.Width / 2;
+                double newY = Canvas.GetTop(ball) + ball.Height / 2;
+                double deltaX = clickPoint.X - newX;
+                double deltaY = clickPoint.Y - newY; 
+                CompositionTarget.Rendering -= CompositionTargetRendering(ball, newX, newY, deltaX, deltaY);
+                CompositionTarget.Rendering += CompositionTargetRendering(ball, newX, newY, deltaX, deltaY);
 
-                double distance = Math.Sqrt(Math.Pow(clickPoint.X - ballPoint.X, 2) + Math.Pow(clickPoint.Y - ballPoint.Y, 2));
-                if (distance < ball.Width / 2)
-                {
-                    // Ball was clicked, start moving it
-                    double newX = Canvas.GetLeft(ball) + ball.Width / 2;
-                    double newY = Canvas.GetTop(ball) + ball.Height / 2;
-                    double deltaX = clickPoint.X - newX;
-                    double deltaY = clickPoint.Y - newY; 
-                    CompositionTarget.Rendering -= NewMethod(ball, newX, newY, deltaX, deltaY);
-                    CompositionTarget.Rendering += NewMethod(ball, newX, newY, deltaX, deltaY);
-
-                }
             }
+            
         }
 
-        private EventHandler NewMethod(Ellipse ball, double newX, double newY, double deltaX,  double deltaY)
+        private EventHandler CompositionTargetRendering(Ellipse ball, double newX, double newY, double deltaX,  double deltaY)
         {
             return (s, args) =>
             {

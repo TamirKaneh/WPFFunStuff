@@ -11,6 +11,10 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Horizontal">
             <Button Content="  Add BAll  " Click="Button_Click"/>
@@ -21,6 +25,8 @@
         <Border BorderThickness="10" BorderBrush="Sienna" Grid.Row="1">
             <Canvas x:Name="MyCanvas"   MouseDown="MyCanvas_MouseDown" Background="Bisque"/>
         </Border>
-        
+
+        <TextBox x:Name="Log" Grid.Column="1" Grid.Row="1" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Width="150"/>
+
     </Grid>
 </Window>
