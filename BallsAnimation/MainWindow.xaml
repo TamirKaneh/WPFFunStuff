@@ -19,6 +19,7 @@
         <StackPanel Orientation="Horizontal">
             <Button Content="  Add BAll  " Click="Button_Click"/>
             <Button Content="Add 10 BAll" Click="Button_Click_1"/>
+            <TextBox x:Name="numOfBalls"/>
             <Label Content="FPS:"/>
             <Label x:Name="lblFPS"/>
         </StackPanel>

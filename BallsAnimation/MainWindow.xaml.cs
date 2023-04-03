@@ -59,7 +59,7 @@ namespace BallsAnimation
                 ball.Tag = new Point();
                 AddBall(ball);
             }
-
+            numOfBalls.Text = Collection.Count.ToString();
             Multi = i;
 
 
@@ -70,6 +70,7 @@ namespace BallsAnimation
         {
             MyCanvas.Children.Add(ball);
             Collection.Add((Ellipse)ball);
+            numOfBalls.Text = Collection.Count.ToString();
         }
         private void MyCanvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
