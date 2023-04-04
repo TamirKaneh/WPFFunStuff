@@ -8,9 +8,9 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <DataTemplate  DataType="{x:Type local:BallModel}">
-            <Ellipse Width="{Binding Radius}" Height="{Binding Radius}" Fill="Red">
+            <Ellipse Width="{Binding Radius}" Height="{Binding Radius,Mode=OneTime}" Fill="Red">
                 <Ellipse.RenderTransform>
-                    <TranslateTransform X="{Binding X}" Y="{Binding Y}" />
+                    <TranslateTransform X="{Binding X,Mode=OneWay}" Y="{Binding Y,Mode=OneWay}" />
                 </Ellipse.RenderTransform>
             </Ellipse>
         </DataTemplate>
@@ -32,13 +32,11 @@
 
         </StackPanel>
         <Border BorderThickness="10" BorderBrush="Sienna" Grid.Row="1">
-            <ListBox ItemsSource="{Binding BallsCollection}" >
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <Canvas IsItemsHost="True"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-            </ListBox>
+            <ItemsControl ItemsSource="{Binding BallsCollection}" >
+                <ItemsPanelTemplate>
+                    <Canvas IsItemsHost="True"/>
+                </ItemsPanelTemplate>
+            </ItemsControl>
         </Border>
 
         <TextBox x:Name="Log" Grid.Column="1" Grid.Row="1" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Width="150"/>

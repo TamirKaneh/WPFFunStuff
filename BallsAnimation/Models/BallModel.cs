@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BallsAnimation.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BallsAnimation.Models
 {
-    public class BallModel : INotifyPropertyChanged
+    public class BallModel : ViewModelBase
     {
         private double _x;
         private double _y;
@@ -15,8 +16,7 @@ namespace BallsAnimation.Models
         private double _velocityY;
         private double _radius;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
+       
         public double X
         {
             get => _x;
@@ -65,11 +65,6 @@ namespace BallsAnimation.Models
                 _radius = value;
                 NotifyPropertyChanged(nameof(Radius));
             }
-        }
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 
