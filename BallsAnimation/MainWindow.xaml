@@ -3,14 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BallsAnimation"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            
         </Grid.RowDefinitions>
         
         <Grid.ColumnDefinitions>
@@ -29,7 +28,6 @@
         <Border BorderThickness="10" BorderBrush="Sienna" Grid.Row="1">
             <Canvas x:Name="MyCanvas"   MouseDown="MyCanvas_MouseDown" Background="Bisque"/>
         </Border>
-
         <TextBox x:Name="Log" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Width="150"/>
 
     </Grid>

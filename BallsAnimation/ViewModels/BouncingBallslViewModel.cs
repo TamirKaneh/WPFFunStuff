@@ -9,9 +9,9 @@ namespace BallsAnimation.ViewModels
 {
     public abstract class BouncingBallslViewModel:ViewModelBase
     {
-        private List<BallModel> bcollection = new List<BallModel>();
+        private List<BallViewModel> bcollection = new List<BallViewModel>();
 
-        public List<BallModel> Bcollection { get => bcollection; set => bcollection = value; }
+        public List<BallViewModel> Bcollection { get => bcollection; set => bcollection = value; }
 
         //command1
         //command multiballs

@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <DataTemplate  DataType="{x:Type local:BallModel}">
+        <DataTemplate  DataType="{x:Type local:BallViewModel}">
             <Ellipse Width="{Binding Radius}" Height="{Binding Radius,Mode=OneTime}" Fill="Red">
                 <Ellipse.RenderTransform>
                     <TranslateTransform X="{Binding X,Mode=OneWay}" Y="{Binding Y,Mode=OneWay}" />
