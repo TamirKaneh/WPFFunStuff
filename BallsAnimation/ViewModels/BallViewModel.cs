@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BallsAnimation.Models
 {
-    public class BallModel : ViewModelBase
+    public class BallViewModel : ViewModelBase
     {
         private double _x;
         private double _y;
